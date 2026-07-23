@@ -2,46 +2,118 @@ import useSubmitFormStore from "../../../store/useSubmitFormStore";
 import Fields from "./Fields";
 
 const ResponseForm = ({ formId }: { formId: string }) => {
-  const { form, onSubmit, onClear, submitFormLoader } = useSubmitFormStore();
+  const { form, onSubmit, onClear, submitFormLoader } =
+    useSubmitFormStore();
+
   const getInputClasses = (index: number) => {
-    return `w-full sm:w-[50%] border-0 border-b-2 ${form.questions[index]?.error ? "border-red-500" : "border-gray-300"
-      } focus:border-blue-600 focus:outline-none py-2 px-1 text-gray-800 bg-transparent`;
+    return `
+      w-full
+      rounded-2xl
+      border
+      px-4
+      py-3
+      bg-slate-50
+      text-slate-800
+      outline-none
+      transition-all
+      duration-200
+      ${
+        form.questions[index]?.error
+          ? "border-red-500 bg-red-50"
+          : "border-slate-200"
+      }
+      focus:border-blue-500
+      focus:bg-white
+      focus:ring-4
+      focus:ring-blue-100
+    `;
   };
+
   return (
     <form className="w-full">
       {form.questions.map((question, index) => (
         <div
           key={index}
-          className={`${question.error ? "border border-red-500" : ""
-            } w-full mb-5 flex flex-col gap-2 justify-between px-7 rounded-lg bg-white py-7`}
+          className={`
+            mb-6
+            rounded-3xl
+            border
+            bg-white
+            p-7
+            shadow-sm
+            transition-all
+            hover:shadow-md
+            ${
+              question.error
+                ? "border-red-400 bg-red-50/20"
+                : "border-slate-200"
+            }
+          `}
         >
-          <h1 className="font-semibold text-lg">{question.questionText}</h1>
+          <div className="mb-5">
+            <h2 className="text-xl font-semibold text-slate-900">
+              {question.questionText}
+            </h2>
+
+            {question.required && (
+              <p className="mt-2 text-sm font-medium text-red-500">
+                * Required
+              </p>
+            )}
+          </div>
 
           <Fields
             question={question}
             getInputClasses={getInputClasses}
             index={index}
           />
-
-          {question.required && (
-            <p className="text-red-500 text-sm font-medium mt-1">This field is required</p>
-          )}
         </div>
       ))}
 
-      <div className="w-full flex justify-between items-center px-7 py-4 rounded-lg">
+      {/* Actions */}
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <button
           disabled={submitFormLoader}
           onClick={(e) => onSubmit(e, formId)}
-          className={`bg-blue-700 cursor-pointer px-3 py-1 text-white rounded-sm hover:bg-blue-800 ${submitFormLoader ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+          className={`
+            rounded-2xl
+            bg-blue-600
+            px-6
+            py-3
+            font-semibold
+            text-white
+            shadow-sm
+            transition-all
+            hover:bg-blue-700
+            hover:shadow-md
+            active:scale-95
+            ${
+              submitFormLoader
+                ? "cursor-not-allowed opacity-50"
+                : "cursor-pointer"
+            }
+          `}
         >
-          Submit
+          {submitFormLoader ? "Submitting..." : "Submit Form"}
         </button>
+
         <button
           onClick={onClear}
           type="reset"
-          className="bg-white text-black border px-3 py-1 rounded-sm border-gray-400 cursor-pointer hover:bg-white"
+          className="
+            rounded-2xl
+            border
+            border-slate-300
+            bg-white
+            px-6
+            py-3
+            font-medium
+            text-slate-700
+            transition-all
+            hover:bg-slate-100
+            hover:shadow-sm
+            cursor-pointer
+          "
         >
           Clear Form
         </button>

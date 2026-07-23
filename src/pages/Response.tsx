@@ -14,10 +14,10 @@ const Response = () => {
   const { getTheForm } = useSubmitFormStore();
   useEffect(() => {
     getTheForm(formId!);
-  }, [getTheForm, formId]);  return (
-    <div className="w-full bg-gray-300 min-h-screen">
-      <div className="max-w-3xl mx-auto px-6 py-4">
-        <Form formId={formId} /> 
+  }, [getTheForm, formId]); return (
+    <div className="min-h-screen bg-slate-100">
+      <div className="mx-auto max-w-4xl px-4 py-8">
+        <Form formId={formId} />
         <Footer />
       </div>
     </div>

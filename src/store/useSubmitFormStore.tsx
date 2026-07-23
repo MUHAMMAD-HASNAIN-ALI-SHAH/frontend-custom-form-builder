@@ -137,20 +137,6 @@ const useSubmitFormStore = create<SubmitFormState>((set, get) => ({
       return;
     }
 
-    set({
-      submitFormLoader: false,
-      submitFormError: false,
-      submited: true,
-      form: {
-        ...get().form,
-        questions: get().form.questions.map((question) => ({
-          ...question,
-          answer: [],
-          error: question.required ? true : false,
-        })),
-      },
-    });
-
     try {
       set({ submitFormLoader: true, submitFormError: false, submited: false });
 
