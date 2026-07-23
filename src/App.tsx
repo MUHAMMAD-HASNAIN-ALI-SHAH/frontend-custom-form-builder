@@ -5,6 +5,7 @@ import { Route } from "react-router-dom"
 import useAuthStore from "./store/useAuthStore";
 import Loader from "./components/Loader";
 import { useEffect } from "react";
+import Response from "./pages/Response";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={isAuthenticatedLoading ? <Loader /> : isAuthenticated ? <Home /> : <Navigate to="/login" />} />
         <Route path="/login" element={isAuthenticatedLoading ? <Loader /> : !isAuthenticated ? <Login /> : <Navigate to="/" />} />
+        <Route path="/response/:formId" element={<Response />} />
       </Routes>
     </>
   )
