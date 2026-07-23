@@ -117,11 +117,10 @@ const useSubmitFormStore = create<SubmitFormState>((set, get) => ({
 
     set((state) => {
       const updatedQuestions = state.form.questions.map((q) => {
-        const isEmpty = q.required && (!q.answer || q.answer.length === 0);
-        if (isEmpty) hasError = true;
+        if (q.error || q.required && q.answer?.length === 0) hasError = true;
         return {
           ...q,
-          error: isEmpty,
+          error: q.required && (!q.answer || q.answer.length === 0),
         };
       });
 
@@ -134,9 +133,23 @@ const useSubmitFormStore = create<SubmitFormState>((set, get) => ({
     });
 
     if (hasError) {
-      console.warn("Form has validation errors");
+      toast.warn("Plz fill all the required fields");
       return;
     }
+
+    set({
+      submitFormLoader: false,
+      submitFormError: false,
+      submited: true,
+      form: {
+        ...get().form,
+        questions: get().form.questions.map((question) => ({
+          ...question,
+          answer: [],
+          error: question.required ? true : false,
+        })),
+      },
+    });
 
     try {
       set({ submitFormLoader: true, submitFormError: false, submited: false });
@@ -156,6 +169,14 @@ const useSubmitFormStore = create<SubmitFormState>((set, get) => ({
         submitFormLoader: false,
         submitFormError: false,
         submited: true,
+        form: {
+          ...get().form,
+          questions: get().form.questions.map((question) => ({
+            ...question,
+            answer: [],
+            error: question.required ? true : false,
+          })),
+        },
       });
     } catch (error: any) {
       console.error("Error submitting form:", error);

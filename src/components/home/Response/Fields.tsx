@@ -26,9 +26,9 @@ const Fields = ({
             placeholder="Your answer"
             className={getInputClasses(index)}
           />
-          {form.questions[index] && form.questions[index].error && (
+          {/* {form.questions[index] && form.questions[index].error && (
             <p className="text-red-500 text-sm">This field is required</p>
-          )}
+          )} */}
         </>
       )}
       {question.questionType === "email" && (
@@ -39,9 +39,9 @@ const Fields = ({
             placeholder="Your answer"
             className={getInputClasses(index)}
           />
-          {form.questions[index] && form.questions[index].error && (
+          {/* {form.questions[index] && form.questions[index].error && (
             <p className="text-red-500 text-sm">This field is required</p>
-          )}
+          )} */}
         </>
       )}
       {question.questionType === "number" && (
@@ -52,9 +52,9 @@ const Fields = ({
             placeholder="Your answer"
             className={getInputClasses(index)}
           />
-          {form.questions[index] && form.questions[index].error && (
+          {/* {form.questions[index] && form.questions[index].error && (
             <p className="text-red-500 text-sm">This field is required</p>
-          )}
+          )} */}
         </>
       )}
       {question.questionType === "date" && (
@@ -65,9 +65,9 @@ const Fields = ({
             placeholder="Your answer"
             className={getInputClasses(index)}
           />
-          {form.questions[index] && form.questions[index].error && (
+          {/* {form.questions[index] && form.questions[index].error && (
             <p className="text-red-500 text-sm">This field is required</p>
-          )}
+          )} */}
         </>
       )}
       {question.questionType === "time" && (
@@ -78,9 +78,9 @@ const Fields = ({
             placeholder="Your answer"
             className={getInputClasses(index)}
           />
-          {form.questions[index] && form.questions[index].error && (
+          {/* {form.questions[index] && form.questions[index].error && (
             <p className="text-red-500 text-sm">This field is required</p>
-          )}
+          )} */}
         </>
       )}
 
@@ -92,9 +92,9 @@ const Fields = ({
             placeholder="Your answer"
             className={getInputClasses(index)}
           />
-          {form.questions[index] && form.questions[index].error && (
+          {/* {form.questions[index] && form.questions[index].error && (
             <p className="text-red-500 text-sm">This field is required</p>
-          )}
+          )} */}
         </>
       )}
 
@@ -106,9 +106,9 @@ const Fields = ({
             onChange={(e) => handleStringsInputChange(e, index)}
             className={getInputClasses(index)}
           />
-          {form.questions[index] && form.questions[index].error && (
+          {/* {form.questions[index] && form.questions[index].error && (
             <p className="text-red-500 text-sm">This field is required</p>
-          )}
+          )} */}
         </>
       )}
 
@@ -131,9 +131,9 @@ const Fields = ({
               </label>
             ))}
           </div>
-          {form.questions[index] && form.questions[index].error && (
+          {/* {form.questions[index] && form.questions[index].error && (
             <p className="text-red-500 text-sm">This field is required</p>
-          )}
+          )} */}
         </>
       )}
 
@@ -153,9 +153,9 @@ const Fields = ({
               </option>
             ))}
           </select>
-          {form.questions[index] && form.questions[index].error && (
+          {/* {form.questions[index] && form.questions[index].error && (
             <p className="text-red-500 text-sm">This field is required</p>
-          )}
+          )} */}
         </>
       )}
 
@@ -209,9 +209,9 @@ const Fields = ({
               </label>
             ))}
           </div>
-          {form.questions[index] && form.questions[index].error && (
+          {/* {form.questions[index] && form.questions[index].error && (
             <p className="text-red-500 text-sm">This field is required</p>
-          )}
+          )} */}
         </>
       )}
     </>
